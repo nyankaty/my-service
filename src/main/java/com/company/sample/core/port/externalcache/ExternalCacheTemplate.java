@@ -46,7 +46,6 @@ public interface ExternalCacheTemplate {
 
     void invalidate(String key);
 
-
     /**
      * Lấy ra tập hợp các key còn hiệu lực trong cache
      *
