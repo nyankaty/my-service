@@ -11,7 +11,6 @@ app:
   repository-query-limit-warning-ms: 10
   default-service-enable-log-request: true
   log-request-http: true
-  log-graphql-enabled: false
   time-trace-enabled: false
   async-executor-core-pool-size: 2
   async-executor-max-pool-size: 4
@@ -70,11 +69,13 @@ spring:
     open-in-view: false
   kafka:
     producer:
-      bootstrap-servers: http://localhost:9092
       enabled: true
+      bootstrap-servers: http://localhost:9092
       retries: 3
       queue-size: 100
       request-timeout: 4000
+      delivery-timeout: 6000
+      default-topic:
     enabled: true
     bootstrap-servers: http://localhost:9092
     consumer:
