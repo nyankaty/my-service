@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ExampleEntity {
+public class SampleEntity {
 
     private Long id;
 

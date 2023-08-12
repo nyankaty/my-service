@@ -3,9 +3,9 @@ package com.company.sample.ui.restful.impl;
 import com.company.common.spring.controller.restful.BaseController;
 import com.company.common.spring.factory.response.Response;
 import com.company.common.spring.factory.response.ResponseFactory;
-import com.company.sample.core.domain.dto.response.ExampleResponseDTO;
-import com.company.sample.core.service.ExampleService;
-import com.company.sample.ui.restful.ExampleOperations;
+import com.company.sample.core.domain.dto.response.SampleResponseDto;
+import com.company.sample.core.service.SampleService;
+import com.company.sample.ui.restful.SampleOperations;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +16,13 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-public class ExampleController extends BaseController implements ExampleOperations {
+public class SampleController extends BaseController implements SampleOperations {
 
     private final ResponseFactory responseFactory;
-    private final ExampleService exampleService;
+    private final SampleService sampleService;
 
     @GetMapping
-    public ResponseEntity<Response<List<ExampleResponseDTO>>> example(){
-        return responseFactory.success(exampleService.findAll());
+    public ResponseEntity<Response<List<SampleResponseDto>>> example(){
+        return responseFactory.success(sampleService.findAll());
     }
 }

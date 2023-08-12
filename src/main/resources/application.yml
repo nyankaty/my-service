@@ -1,0 +1,102 @@
+application-short-name: SAMPLE-APP
+application-context-name: /sample-app/api
+version: v1
+apiUrl: ${application-context-name}/${version}
+server:
+  port: 8080
+
+app:
+  application-context-name: /sample-app/api
+  application-short-name: SAMPLE-APP
+  repository-query-limit-warning-ms: 10
+  default-service-enable-log-request: true
+  log-request-http: true
+  log-graphql-enabled: false
+  time-trace-enabled: false
+  async-executor-core-pool-size: 2
+  async-executor-max-pool-size: 4
+  datasource:
+    default:
+      enable: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/admindb
+      username: root
+      password: vinhvove
+      configuration:
+        max-lifetime: 300000
+        minimum-idle: 10
+        maximum-pool-size: 50
+      properties:
+        hibernate:
+          temp:
+            use_jdbc_metadata_defaults: false
+          format_sql: true
+          show_sql: true
+          use_sql_comments: true
+          hbm2ddl:
+            auto: none
+  cache:
+    external:
+      enable: true
+      applicationShortName: SAMPLE-APP
+      host: localhost
+      port: 6379
+      password: vinhvove
+      nodes: 127.0.0.1:6379, 127.0.0.2:6379, 127.0.0.3:6379
+      delimiter: ':'
+      cacheDefaultExpiration: 100800000
+      cacheExpirations:
+        SampleService: 180
+    internal:
+      enable: true
+      applicationShortName: SAMPLE-APP
+      expireAfterWrite:
+      expireAfterAccess:
+      refreshAfterWrite:
+      enableRecordStats:
+      cacheTemporaryDisable: false
+      removalListener: true
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+        ddl-auto: none
+        format_sql: true
+    show-sql: true
+    open-in-view: false
+  kafka:
+    producer:
+      bootstrap-servers: http://localhost:9092
+      enabled: true
+      retries: 3
+      queue-size: 100
+      request-timeout: 4000
+    enabled: true
+    bootstrap-servers: http://localhost:9092
+    consumer:
+      enabled: true
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+        SQL: DEBUG
+
+info:
+  build:
+    description: '@project.description@'
+    name: '@project.name@'
+    version: '@project.version@'
+    artifact: '@project.artifactId@'

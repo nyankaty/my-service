@@ -11,7 +11,7 @@ import lombok.Builder;
 @Setter
 @Getter
 @Builder
-public class ExampleResponseDTO {
+public class SampleResponseDto {
 
     private String columnOne;
 

@@ -1,8 +1,8 @@
 package com.company.sample.core.service.impl;
 
-import com.company.sample.core.domain.dto.response.ExampleResponseDTO;
-import com.company.sample.core.port.store.ExampleStore;
-import com.company.sample.core.service.ExampleService;
+import com.company.sample.core.domain.dto.response.SampleResponseDto;
+import com.company.sample.core.port.store.SampleStore;
+import com.company.sample.core.service.SampleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class ExampleServiceImpl implements ExampleService {
+public class SampleServiceImpl implements SampleService {
 
-    private final ExampleStore exampleStore;
+    private final SampleStore sampleStore;
 
     @Override
-    public List<ExampleResponseDTO> findAll() {
-        return exampleStore.findAll().stream().map(item -> ExampleResponseDTO.builder()
+    public List<SampleResponseDto> findAll() {
+        return sampleStore.listAllExample().stream().map(item -> SampleResponseDto.builder()
                 .columnOne(item.getColumnOne())
                 .columnTwo(item.getColumnTwo())
                 .build())
