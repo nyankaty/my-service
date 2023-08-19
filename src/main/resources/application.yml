@@ -46,13 +46,14 @@ app:
       cacheDefaultExpiration: 100800000
       cacheExpirations:
         SampleService: 180
+        SampleService1: 180
     internal:
       enable: true
       applicationShortName: SAMPLE-APP
-      expireAfterWrite:
-      expireAfterAccess:
-      refreshAfterWrite:
-      enableRecordStats:
+      expireAfterWrite: 180
+      expireAfterAccess: 180
+      refreshAfterWrite: 180
+      enableRecordStats: false
       cacheTemporaryDisable: false
       removalListener: true
 
