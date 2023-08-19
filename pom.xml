@@ -16,7 +16,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <sonar.java.source>${java.version}</sonar.java.source>
         <sonar.java.libraries>target/classes</sonar.java.libraries>
-        <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
     </properties>
 
     <dependencies>

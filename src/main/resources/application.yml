@@ -68,19 +68,19 @@ spring:
         format_sql: true
     show-sql: true
     open-in-view: false
-  kafka:
-    producer:
-      enabled: true
-      bootstrap-servers: http://localhost:9092
-      retries: 3
-      queue-size: 100
-      request-timeout: 4000
-      delivery-timeout: 6000
-      default-topic:
-    enabled: true
-    bootstrap-servers: http://localhost:9092
-    consumer:
-      enabled: true
+#  kafka:
+#    enabled: true
+#    bootstrap-servers: http://localhost:9092
+#    producer:
+#      enabled: true
+#      bootstrap-servers: http://localhost:9092
+#      retries: 3
+#      queue-size: 100
+#      request-timeout: 4000
+#      delivery-timeout: 6000
+#      default-topic:
+#    consumer:
+#      enabled: true
 
 logging:
   level:
