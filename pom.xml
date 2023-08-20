@@ -6,7 +6,7 @@
     <groupId>com.company.common</groupId>
     <artifactId>my-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>my-service</name>
+    <name>Sample app</name>
     <description>Sample internal service</description>
 
     <properties>

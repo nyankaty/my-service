@@ -12,8 +12,10 @@ app:
   default-service-enable-log-request: true
   log-request-http: true
   time-trace-enabled: false
-  async-executor-core-pool-size: 2
+  async-executor-core-pool-size: 1
   async-executor-max-pool-size: 4
+  async-executor-keep-alive-seconds: 10
+  async-executor-queue-capacity: 50
   datasource:
     default:
       enable: true
@@ -22,7 +24,7 @@ app:
       username: root
       password: vinhvove
       configuration:
-        max-lifetime: 300000
+        idle-timeout: 10000
         minimum-idle: 10
         maximum-pool-size: 50
       properties:
@@ -68,19 +70,19 @@ spring:
         format_sql: true
     show-sql: true
     open-in-view: false
-#  kafka:
-#    enabled: true
-#    bootstrap-servers: http://localhost:9092
-#    producer:
-#      enabled: true
-#      bootstrap-servers: http://localhost:9092
-#      retries: 3
-#      queue-size: 100
-#      request-timeout: 4000
-#      delivery-timeout: 6000
-#      default-topic:
-#    consumer:
-#      enabled: true
+  kafka:
+    enabled: false
+    bootstrap-servers: http://localhost:9092
+    producer:
+      enabled: true
+      bootstrap-servers: http://localhost:9092
+      retries: 3
+      queue-size: 100
+      request-timeout: 4000
+      delivery-timeout: 6000
+      default-topic:
+    consumer:
+      enabled: true
 
 logging:
   level:
@@ -95,10 +97,17 @@ logging:
             sql:
               BasicBinder: TRACE
         SQL: DEBUG
+    com:
+      company:
+        common: DEBUG
+      zaxxer:
+        hikari:
+          HikariConfig: DEBUG
+
 
 info:
   build:
-    description: '@project.description@'
-    name: '@project.name@'
-    version: '@project.version@'
-    artifact: '@project.artifactId@'
+    description: Sample internal service
+    name: sample-app
+    version: 0.0.1-SNAPSHOT
+    artifact: my-service
