@@ -1,13 +1,19 @@
 package com.company.common.sample.core.service.impl;
 
-import com.company.common.sample.core.domain.dto.response.SampleResponseDto;
+import com.company.common.sample.core.domain.dto.request.SampleReqDto;
+import com.company.common.sample.core.domain.dto.response.SampleResDto;
+import com.company.common.sample.core.domain.entity.SampleEntity;
+import com.company.common.sample.core.domain.mapper.SampleMapper;
 import com.company.common.sample.core.service.SampleService;
 import com.company.common.sample.core.port.store.SampleStore;
+import com.company.common.spring.factory.request.PagingRequest;
+import com.company.common.spring.factory.response.Paging;
+import com.company.common.spring.factory.response.PagingFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -15,13 +21,13 @@ import java.util.stream.Collectors;
 public class SampleServiceImpl implements SampleService {
 
     private final SampleStore sampleStore;
+    private final SampleMapper sampleMapper;
 
     @Override
-    public List<SampleResponseDto> findAll() {
-        return sampleStore.listAllExample().stream().map(item -> SampleResponseDto.builder()
-                .columnOne(item.getColumnOne())
-                .columnTwo(item.getColumnTwo())
-                .build())
-                .collect(Collectors.toList());
+    public Paging<SampleResDto> findAll(SampleReqDto request) {
+        PagingFactory pagingFactory = new PagingFactory();
+        Page<SampleResDto> page = sampleStore.listByPage(pagingFactory.createPageable(request));
+
+        return new Paging<>(page.getContent(), page.getTotalElements());
     }
 }

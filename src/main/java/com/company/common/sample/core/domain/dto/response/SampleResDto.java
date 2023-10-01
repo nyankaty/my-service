@@ -1,17 +1,14 @@
 package com.company.common.sample.core.domain.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.Builder;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@EqualsAndHashCode
 @Builder
-public class SampleResponseDto {
+public class SampleResDto {
 
     private String columnOne;
 

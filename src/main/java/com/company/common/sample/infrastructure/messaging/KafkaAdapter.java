@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
         havingValue = "true"
 )
 public class KafkaAdapter extends KafkaPublisher implements MessagingPort {
+
     public KafkaAdapter(@Qualifier("defaultKafkaTemplate") KafkaTemplate<String, String> kafkaTemplate) {
         super(kafkaTemplate);
     }

@@ -29,6 +29,7 @@ app:
         maximum-pool-size: 50
       properties:
         hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
           temp:
             use_jdbc_metadata_defaults: false
           format_sql: true
@@ -60,18 +61,12 @@ app:
       removalListener: true
 
 spring:
+  config:
+    import: optional:configserver:http://127.0.0.1:8888
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        temp:
-          use_jdbc_metadata_defaults: false
-        ddl-auto: none
-        format_sql: true
-    show-sql: true
     open-in-view: false
   kafka:
-    enabled: false
+    enabled: true
     bootstrap-servers: http://localhost:9092
     producer:
       enabled: true
@@ -104,10 +99,9 @@ logging:
         hikari:
           HikariConfig: DEBUG
 
-
 info:
   build:
     description: Sample internal service
-    name: sample-app
+    name: my-service
     version: 0.0.1-SNAPSHOT
     artifact: my-service
