@@ -1,9 +1,12 @@
 package com.company.common.sample.ui.restful.impl;
 
+import com.company.common.client.application.ClientTemplate;
 import com.company.common.sample.core.domain.dto.request.SampleReqDto;
 import com.company.common.sample.core.domain.dto.response.SampleResDto;
+import com.company.common.sample.core.port.externalcache.ExternalCacheTemplate;
 import com.company.common.sample.core.service.SampleService;
 import com.company.common.sample.infrastructure.client.ClientTemplateAdapter;
+import com.company.common.sample.infrastructure.externalcache.ExternalCacheTemplateAdapter;
 import com.company.common.sample.ui.restful.SampleOperations;
 import com.company.common.spring.factory.response.Paging;
 import com.company.common.spring.factory.response.Response;
@@ -20,7 +23,8 @@ import reactor.core.publisher.Mono;
 public class SampleController implements SampleOperations {
 
     private final SampleService sampleService;
-    private final ClientTemplateAdapter clientTemplate;
+    private final ClientTemplate clientTemplate;
+    private final ExternalCacheTemplateAdapter externalCacheTemplate;
 
     @Override
     public Response<Paging<SampleResDto>> example(SampleReqDto request) {
@@ -30,8 +34,10 @@ public class SampleController implements SampleOperations {
     @Override
     public String get() {
 //        return Mono.just("sgd");
+        externalCacheTemplate.getObject("sggs", "sg");
         return WebClient.create("http://192.168.0.103:7777").get().uri("/config")
                 .retrieve().bodyToMono(String.class).block();
+
 //        return clientTemplate.get("http://localhost:7777/config", null, 10, String.class);
     }
 }

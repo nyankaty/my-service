@@ -41,9 +41,10 @@ app:
     external:
       enable: true
       applicationShortName: SAMPLE-APP
-      delimiter: ':'
+      delimiter: '::'
       cacheDefaultExpiration: 100800000
-      custom-expirations:
+      scanLimit: 1000
+      cacheExpirations:
         SampleService: 180
         SampleService1: 180
       host: 127.0.0.1
@@ -56,15 +57,6 @@ app:
       sentinel:
         enable: false
         master: mymaster
-    internal:
-      enable: true
-      applicationShortName: SAMPLE-APP
-      expireAfterWrite: 180
-      expireAfterAccess: 180
-      refreshAfterWrite: 180
-      enableRecordStats: false
-      cacheTemporaryDisable: false
-      removalListener: true
 
 spring:
   config:
