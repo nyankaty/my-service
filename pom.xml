@@ -54,7 +54,7 @@
         </dependency>
         <dependency>
             <groupId>com.company.common</groupId>
-            <artifactId>common-cache-external</artifactId>
+            <artifactId>common-redis</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
