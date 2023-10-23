@@ -1,4 +1,4 @@
-package com.company.common.sample.ui.restful;
+package com.company.common.sample.application.rest;
 
 import com.company.common.sample.core.domain.dto.request.SampleReqDto;
 import com.company.common.sample.core.domain.dto.response.SampleResDto;

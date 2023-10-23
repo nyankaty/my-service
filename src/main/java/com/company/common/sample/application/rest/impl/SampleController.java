@@ -1,11 +1,11 @@
-package com.company.common.sample.ui.restful.impl;
+package com.company.common.sample.application.rest.impl;
 
 import com.company.common.client.application.ClientTemplate;
 import com.company.common.sample.core.domain.dto.request.SampleReqDto;
 import com.company.common.sample.core.domain.dto.response.SampleResDto;
 import com.company.common.sample.core.service.SampleService;
 import com.company.common.sample.infrastructure.cache.CacheTemplateAdapter;
-import com.company.common.sample.ui.restful.SampleOperations;
+import com.company.common.sample.application.rest.SampleOperations;
 import com.company.common.spring.factory.response.Paging;
 import com.company.common.spring.factory.response.Response;
 import lombok.RequiredArgsConstructor;
