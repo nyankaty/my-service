@@ -20,7 +20,7 @@ app:
     default:
       enable: true
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/admindb
+      url: jdbc:mysql://0.0.0.0:3306/admin_db
       username: root
       password: vinhvove
       configuration:
@@ -51,12 +51,12 @@ app:
       port: 6379
       username:
       password:
-      nodes: 127.0.0.1:6378, 127.0.0.2:6377, 127.0.0.3:6376
+      nodes: 127.0.0.1:6380, 127.0.0.1:6381
       cluster:
         enable: false
       sentinel:
-        enable: false
-        master: mymaster
+        enable: true
+        master: redis-master
 
 spring:
   config:

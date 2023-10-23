@@ -1,7 +1,7 @@
 package com.company.common.sample.infrastructure.cache;
 
-import com.company.common.cache.external.implementation.RedisCacheTemplate;
-import com.company.common.cache.external.port.CacheTemplate;
+import com.company.common.redis.implementation.RedisCacheTemplate;
+import com.company.common.redis.port.CacheTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
