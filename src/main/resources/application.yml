@@ -16,27 +16,27 @@ app:
   async-executor-max-pool-size: 4
   async-executor-keep-alive-seconds: 10
   async-executor-queue-capacity: 50
-  datasource:
-    default:
-      enable: true
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://0.0.0.0:3306/admin_db
-      username: root
-      password: vinhvove
-      configuration:
-        idle-timeout: 10000
-        minimum-idle: 10
-        maximum-pool-size: 50
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL8Dialect
-          temp:
-            use_jdbc_metadata_defaults: false
-          format_sql: true
-          show_sql: true
-          use_sql_comments: true
-          hbm2ddl:
-            auto: none
+#  datasource:
+#    default:
+#      enable: true
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url:
+#      username: root
+#      password: vinhvove
+#      configuration:
+#        idle-timeout: 10000
+#        minimum-idle: 10
+#        maximum-pool-size: 50
+#      properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.MySQL8Dialect
+#          temp:
+#            use_jdbc_metadata_defaults: false
+#          format_sql: true
+#          show_sql: true
+#          use_sql_comments: true
+#          hbm2ddl:
+#            auto: none
   cache:
     external:
       enable: true
@@ -61,8 +61,25 @@ app:
 spring:
   config:
     import: optional:configserver:http://127.0.0.1:8888
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://0.0.0.0:3306/admin_db
+    username: root
+    password: vinhvove
+    hikari:
+      minimum-idle: 10
+      idle-timeout: 10000
+      maximum-pool-size: 50
   jpa:
     open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        show_sql: true
+        use_sql_comments: true
   kafka:
     enabled: false
     bootstrap-servers: http://localhost:9092
